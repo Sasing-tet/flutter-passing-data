@@ -36,26 +36,35 @@ class _MyHomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: TextField(
-              controller: _textController,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: ListView(
+          children: [
+            ListTile(
+              title: TextField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: "Input data to be passed....",
+                  hintStyle: TextStyle(
+                    color: Colors.grey
+                  )
+                ),
+              ),
             ),
-          ),
-          ListTile(
-            title: ElevatedButton(
-              child: Text("Send"),
-              onPressed: () {
-                var route = MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      NextPage(value: _textController.text),
-                );
-                Navigator.of(context).push(route);
-              },
-            ),
-          )
-        ],
+            ListTile(
+              title: ElevatedButton(
+                child: Text("Send"),
+                onPressed: () {
+                  var route = MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        NextPage(value: _textController.text),
+                  );
+                  Navigator.of(context).push(route);
+                },
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
